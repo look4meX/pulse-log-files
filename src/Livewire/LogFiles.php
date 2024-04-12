@@ -32,4 +32,11 @@ class LogFiles extends Card
             'servers' => $servers,
         ]);
     }
+
+    public function download(string $file) {
+
+        return response()->streamDownload(function() use ($file) {
+            echo file_get_contents(storage_path('logs/'. $file));
+        }, $file);
+    }
 }
