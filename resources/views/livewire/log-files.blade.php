@@ -23,7 +23,7 @@
                         <tbody>
                             @foreach ($server->logFiles as $logFile)
                                 <tr class="h-2 first:h-0"></tr>
-                                <tr wire:key="log-file-{{ $logFile->name }}">
+                            <tr wire:key="log-file-{{ $logFile->name }}" wire:click="download('{{$logFile->name}}')" style="cursor: pointer">
                                     <x-pulse::td>
                                         <div class="flex items-center" title="{{ $logFile->name }}">
                                             <div>{{ $logFile->name }}</div>
@@ -33,13 +33,11 @@
                                         {{ $logFile->readableSize }}
                                     </x-pulse::td>
                                 <x-pulse::td>
-                                    <a href="#" wire:click="download('{{$logFile->name}}')">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title />
+                                    <svg style="width: 18px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title />
                                             <path d="M18,20H6a1,1,0,0,1,0-2H18a1,1,0,0,1,0,2Z" fill="#464646" />
                                             <path d="M15.92,11.62A1,1,0,0,0,15,11H13V5a1,1,0,0,0-2,0v6H9a1,1,0,0,0-.92.62,1,1,0,0,0,.21,1.09l3,3a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l3-3A1,1,0,0,0,15.92,11.62Z"
                                                   fill="#464646" />
                                         </svg>
-                                    </a>
                                 </x-pulse::td>
                                 </tr>
                             @endforeach
